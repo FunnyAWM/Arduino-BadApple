@@ -32,6 +32,7 @@ def main() -> None:
                 for bit in frame_matrix[chunk * 32: (chunk + 1) * 32]:
                     row_val = (row_val << 1) | bit
                     # 在Arduino Uno R4点阵中，允许使用32比特数值存储灯阵数据
+                    # 动画格式为3个32位数作为点阵数据，最后一位为延时时长
                     # 转换为二进制后，若某位为1则点亮，否则熄灭
                 frame_data.append(row_val & 0xFFFFFFFF)  # 确保是32位
             f_out.write("{ ")
